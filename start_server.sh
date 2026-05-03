@@ -16,7 +16,11 @@ fi
 echo "[+] Activating virtual environment..."
 source "$VENV_DIR/bin/activate"
 
-
+# Install dependencies if requirements.txt exists
+if [ -f "requirements.txt" ]; then
+    echo "[+] Checking/installing dependencies from requirements.txt..."
+    pip install -r requirements.txt --upgrade > /dev/null
+fi
 
 # Run the MCP server
 echo "[+] Starting HexStrike AI MCP Server on port 8888..."
