@@ -1134,7 +1134,11 @@ verify_tools() {
         fi
 
         if [[ -n "$FOUND_PATH" ]]; then
-            VER=$("$FOUND_PATH" --version 2>/dev/null | head -1 | grep -oE '[0-9]+\.[0-9.]+' | head -1 || echo "ok")
+            if [[ "$TOOL" =~ ^(ghidra|ophcrack|responder)$ ]]; then
+                VER="ok"
+            else
+                VER=$(timeout 2 "$FOUND_PATH" --version 2>/dev/null | head -1 | grep -oE '[0-9]+\.[0-9.]+' | head -1 || echo "ok")
+            fi
             printf "  ${GREEN}✔${RESET} %-22s ${DIM}%s${RESET}\n" "$TOOL" "$VER"
             FOUND=$((FOUND + 1))
         else
@@ -1152,7 +1156,11 @@ verify_tools() {
         elif [[ -f "$INSTALL_DIR/venv/bin/$TOOL" ]]; then FOUND_PATH="$INSTALL_DIR/venv/bin/$TOOL"
         fi
         if [[ -n "$FOUND_PATH" ]]; then
-            VER=$("$FOUND_PATH" --version 2>/dev/null | head -1 | grep -oE '[0-9]+\.[0-9.]+' | head -1 || echo "ok")
+            if [[ "$TOOL" =~ ^(ghidra|ophcrack|responder)$ ]]; then
+                VER="ok"
+            else
+                VER=$(timeout 2 "$FOUND_PATH" --version 2>/dev/null | head -1 | grep -oE '[0-9]+\.[0-9.]+' | head -1 || echo "ok")
+            fi
             printf "  ${GREEN}✔${RESET} %-22s ${DIM}%s${RESET}\n" "$TOOL" "$VER"
             FOUND=$((FOUND + 1))
         else
@@ -1165,7 +1173,11 @@ verify_tools() {
     echo -e "\n${BOLD}Password & Authentication:${RESET}"
     for TOOL in hydra john hashcat medusa evil-winrm netexec ophcrack; do
         if command -v "$TOOL" &>/dev/null; then
-            VER=$("$TOOL" --version 2>/dev/null | head -1 | grep -oE '[0-9]+\.[0-9.]+' | head -1 || echo "ok")
+            if [[ "$TOOL" =~ ^(ghidra|ophcrack|responder)$ ]]; then
+                VER="ok"
+            else
+                VER=$(timeout 2 "$TOOL" --version 2>/dev/null | head -1 | grep -oE '[0-9]+\.[0-9.]+' | head -1 || echo "ok")
+            fi
             printf "  ${GREEN}✔${RESET} %-22s ${DIM}%s${RESET}\n" "$TOOL" "$VER"
             FOUND=$((FOUND + 1))
         else
@@ -1183,7 +1195,11 @@ verify_tools() {
         elif [[ -f "$INSTALL_DIR/venv/bin/$TOOL" ]]; then FOUND_PATH="$INSTALL_DIR/venv/bin/$TOOL"
         fi
         if [[ -n "$FOUND_PATH" ]]; then
-            VER=$("$FOUND_PATH" --version 2>/dev/null | head -1 | grep -oE '[0-9]+\.[0-9.]+' | head -1 || echo "ok")
+            if [[ "$TOOL" =~ ^(ghidra|ophcrack|responder)$ ]]; then
+                VER="ok"
+            else
+                VER=$(timeout 2 "$FOUND_PATH" --version 2>/dev/null | head -1 | grep -oE '[0-9]+\.[0-9.]+' | head -1 || echo "ok")
+            fi
             printf "  ${GREEN}✔${RESET} %-22s ${DIM}%s${RESET}\n" "$TOOL" "$VER"
             FOUND=$((FOUND + 1))
         else
@@ -1202,7 +1218,11 @@ verify_tools() {
         elif [[ -f "/usr/local/bin/$TOOL" ]]; then FOUND_PATH="/usr/local/bin/$TOOL"
         fi
         if [[ -n "$FOUND_PATH" ]]; then
-            VER=$("$FOUND_PATH" --version 2>/dev/null | head -1 | grep -oE '[0-9]+\.[0-9.]+' | head -1 || echo "ok")
+            if [[ "$TOOL" =~ ^(ghidra|ophcrack|responder)$ ]]; then
+                VER="ok"
+            else
+                VER=$(timeout 2 "$FOUND_PATH" --version 2>/dev/null | head -1 | grep -oE '[0-9]+\.[0-9.]+' | head -1 || echo "ok")
+            fi
             printf "  ${GREEN}✔${RESET} %-22s ${DIM}%s${RESET}\n" "$TOOL" "$VER"
             FOUND=$((FOUND + 1))
         else
@@ -1215,7 +1235,11 @@ verify_tools() {
     echo -e "\n${BOLD}Browser agent:${RESET}"
     for TOOL in google-chrome-stable chromium-browser chromium chromedriver; do
         if command -v "$TOOL" &>/dev/null; then
-            VER=$("$TOOL" --version 2>/dev/null | head -1 | grep -oE '[0-9]+\.[0-9.]+' | head -1 || echo "ok")
+            if [[ "$TOOL" =~ ^(ghidra|ophcrack|responder)$ ]]; then
+                VER="ok"
+            else
+                VER=$(timeout 2 "$TOOL" --version 2>/dev/null | head -1 | grep -oE '[0-9]+\.[0-9.]+' | head -1 || echo "ok")
+            fi
             printf "  ${GREEN}✔${RESET} %-22s ${DIM}%s${RESET}\n" "$TOOL" "$VER"
             FOUND=$((FOUND + 1))
         fi
