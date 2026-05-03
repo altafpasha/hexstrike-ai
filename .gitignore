@@ -1,0 +1,36 @@
+# HexStrike Git Ignore
+# --------------------
+
+# Python Virtual Environments
+hexstrike-env/
+hexstrike-dev/
+venv/
+env/
+.env/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Logs
+*.log
+stdout.log
+stderr.log
+log/
+logs/
+
+# IDE & AI Tools
+.gemini/
+.vscode/
+.idea/
+
+# Local configuration
+*.env
+.env
+keys.env
+hexstrike.conf
+
+# Reports / Output
+reports/
+output/
