@@ -16,6 +16,12 @@ fi
 echo "[+] Activating HexStrike tools virtual environment..."
 source "$VENV_DIR/bin/activate"
 
+# Install server-specific dependencies (flask, aiohttp, fastmcp, etc.)
+if [ -f "requirements.txt" ]; then
+    echo "[+] Installing MCP server dependencies (aiohttp, flask, mcp, etc.)..."
+    pip install -r requirements.txt --upgrade > /dev/null
+fi
+
 # Run the MCP server
 echo "[+] Starting HexStrike AI MCP Server on port 8888..."
 python3 hexstrike_server.py --port 8888
