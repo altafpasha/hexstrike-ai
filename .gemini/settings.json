@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "hexstrike-ai": {
+      "command": "powershell.exe",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:\\Users\\HP\\Documents\\codesec\\hexstrike-ai\\start_hexstrike_mcp.ps1"
+      ]
+    }
+  }
+}
