@@ -3,24 +3,18 @@
 # HexStrike Server Launcher
 # ---------------------------------------------------------
 
-VENV_DIR="hexstrike-dev"
+VENV_DIR="$HOME/.hexstrike/venv"
 
-# Create the virtual environment if it doesn't exist
+# Check if the virtual environment exists
 if [ ! -d "$VENV_DIR" ]; then
-    echo "[+] Creating Python virtual environment in '$VENV_DIR'..."
-    python3 -m venv "$VENV_DIR"
-    echo "[+] Virtual environment created successfully."
+    echo "[!] Virtual environment not found at $VENV_DIR"
+    echo "Please run the hexstrike_tools_install.sh script first to set up the environment."
+    exit 1
 fi
 
 # Activate the virtual environment
-echo "[+] Activating virtual environment..."
+echo "[+] Activating HexStrike tools virtual environment..."
 source "$VENV_DIR/bin/activate"
-
-# Install dependencies if requirements.txt exists
-if [ -f "requirements.txt" ]; then
-    echo "[+] Checking/installing dependencies from requirements.txt..."
-    pip install -r requirements.txt --upgrade > /dev/null
-fi
 
 # Run the MCP server
 echo "[+] Starting HexStrike AI MCP Server on port 8888..."
